@@ -16,11 +16,11 @@ python3-dev \
 && rm -rf /var/lib/apt/lists/*
 
 # Copy the current directory contents into the container at /tmp
-ADD ./requirements.txt /tmp
+ADD requirements.txt /tmp
 
 # Install any needed packages specified in requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 
 EXPOSE 8000
 
-CMD [ "sh" ]
+CMD [ "sh", "-c", "python manage.py runserver 0.0.0.0:8000" ]
