@@ -1,4 +1,4 @@
-FROM python:3.6-slim-stretch
+FROM python:3.10.6-slim-buster
 
 # The enviroment variable ensures that the python output is set straight
 # to the terminal with out buffering it first
@@ -11,8 +11,8 @@ RUN mkdir /src
 WORKDIR /src
 
 # Install necessary packages
-RUN apt-get update && apt-get install -y libpq-dev \
-python3-dev \
+RUN apt-get update && apt-get install -y libpq-dev python3-dev \
+&& pip3 install --upgrade pip \
 && rm -rf /var/lib/apt/lists/*
 
 # Copy the current directory contents into the container at /tmp
